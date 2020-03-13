@@ -1,6 +1,6 @@
 # Graph Path Feature Learning (GPFL)
 
-GPFL is a bottom-up rule learner utilizing a Generalization-Specialization (Gen-Spec) mechanism to efficiently learn both abstract and instantiated rules directly from knowledge graphs.
+GPFL is a bottom-up probabilistic inductive rule learner utilizing a Generalization-Specialization (Gen-Spec) rule generation mechanism to efficiently learn both abstract and instantiated rules directly from knowledge graphs.
 
 ## Requirements
 - Java >= 1.8
