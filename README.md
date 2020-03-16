@@ -73,6 +73,14 @@ Runtime: ~4101s
 ## Citation
 If you use our code, please cite the paper:
 ```
+@misc{gu2020efficient,
+    title={Efficient Rule Learning with Template Saturation for Knowledge Graph Completion},
+    author={Yulong Gu and Yu Guan and Paolo Missier},
+    year={2020},
+    eprint={2003.06071},
+    archivePrefix={arXiv},
+    primaryClass={cs.AI}
+}
 ```
 
 ## License
