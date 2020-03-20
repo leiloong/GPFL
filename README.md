@@ -12,16 +12,16 @@ GPFL is a bottom-up probabilistic inductive rule learner utilizing a Generalizat
 This figure shows the functionalities implemented in the GPFL system. To get started on learning probabilistic first-order rules using GPFL and reproducing results reported in the paper, let's first walk through an example where we learn rules for ALL relation types in the UWCSE dataset.
 
 #### Build Neo4j Graph Database
-As the system is implemented on top of the Neo4j Core API, it requires data being presented in a Neo4j Graph Database. We have implemented procedure to efficiently convert a triple file into a graph database. First, please download the benchmark datasets from [here](https://www.dropbox.com/s/hbgih3juiuoj34e/GPFL-Benchmarks.zip?dl=1) and unzip it into folder `experiments` at your GPFL home directory. 
+As the system is implemented on top of the Neo4j Core API, it requires data being presented in a Neo4j Graph Database. We have implemented a procedure that efficiently converts a triple file into a graph database. Please download the benchmark datasets from [here](https://www.dropbox.com/s/hbgih3juiuoj34e/GPFL-Benchmarks.zip?dl=1) and unzip it into folder `experiments` at your GPFL home directory. 
 
 Option `-t tripleFile` specifies the path of the triple file used to build a graph database. To build a graph database for UWCSE, execute:
 ```
 gradle run --args="-t experiments/UWCSE/triples.txt"
 ```
-This directive will generates a Neo4j graph database at `experiments/UWCSE/databases`, which can be queried by using [Neo4j Cypher](https://neo4j.com/download/) for EDA.
+This directive will generate a Neo4j graph database at `experiments/UWCSE/databases`, which can be queried by using [Neo4j Cypher](https://neo4j.com/download/) for EDA and verification.
 
 #### Create Train/Test Sets
-Option `-c configFile` specifies the path of the GPFL configuration file. You can find the config file for UWCSE at `experiments/UWCSE/config.json`. Here we introduce keys:
+Option `-c configFile` specifies the path of the GPFL configuration file. You can find the config file for UWCSE at `experiments/UWCSE/config.json`. Here we introduce some of the useful keys:
 - `target_relation`: a collection of relation types you want to learn rules for. For instance, if for a dataset it includes relation types `A,B,C,D,E` and you only want to learn rules for `B,E`, then simply set `target_relatoin` to `["B", "E"]`, which instructs the system to only learn rules for `B` and `E`. When setting to empty, it either learn rules for all of the relation types, or a randomly selected subsets.
 - `randomly_selected_relations`: specifies the number of randomly selected relations you want to learn rules for. For instance, when setting it to 20, the system will randomly select 20 relation types from the data and learn rules for each of them. When `target_relation` has higher priority then `randomly_selected_relations`. When `target_relation` is empty and `randomly_selected_relations` is 0, the system will learn rules for all relation types in the data.
 - `split_ratio`: specifies the train to test set ratio.
@@ -73,13 +73,11 @@ Runtime: ~4101s
 ## Citation
 If you use our code, please cite the paper:
 ```
-@misc{gu2020efficient,
-    title={Efficient Rule Learning with Template Saturation for Knowledge Graph Completion},
-    author={Yulong Gu and Yu Guan and Paolo Missier},
-    year={2020},
-    eprint={2003.06071},
-    archivePrefix={arXiv},
-    primaryClass={cs.AI}
+@article{gu2020efficient,
+  title={Efficient Rule Learning with Template Saturation for Knowledge Graph Completion},
+  author={Gu, Yulong and Guan, Yu and Missier, Paolo},
+  journal={arXiv preprint arXiv:2003.06071},
+  year={2020}
 }
 ```
 
